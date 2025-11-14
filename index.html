@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Responsive Grid Landing — Template</title>
+  <meta name="description" content="Adaptive, mobile-first landing template using CSS Grid, Flexbox and media queries." />
+  <style>
+    :root{
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa4b2;
+      --accent: #5eead4; 
+      --glass: rgba(255,255,255,0.03);
+      --radius: 14px;
+      --gap: 1.25rem;
+      --max-width: 1200px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color-scheme: dark;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#071021 0%, var(--bg) 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:clamp(1rem,2.5vw,2.5rem)}
+
+    header{position:sticky;top:12px;z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:transparent;padding:0.5rem;border-radius:12px}
+    .brand{display:flex;gap:0.75rem;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#042431}
+    nav ul{display:flex;gap:1rem;align-items:center;list-style:none;padding:0;margin:0}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta{background:linear-gradient(90deg,var(--accent),#60a5fa);padding:0.55rem 0.9rem;border-radius:10px;color:#042431;font-weight:700;text-decoration:none}
+
+    .hero{\n      display:grid;\n      grid-template-columns: 1fr;\n      gap:var(--gap);\n      place-items:center;\n      text-align:center;\n      margin-top:1.25rem;\n    }
+
+    .hero-inner{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:clamp(1rem,2.5vw,2.5rem);border-radius:var(--radius);display:grid;grid-template-columns:1fr;gap:1rem}
+
+    .eyebrow{color:var(--accent);font-weight:700;letter-spacing:0.6px}
+    h1{font-size:clamp(1.6rem,3.8vw,2.6rem);margin:0 0 0.2rem}
+    p.lead{color:var(--muted);margin:0 0 1rem}
+
+    .hero-cta{display:flex;gap:0.75rem;flex-wrap:wrap}
+
+    .product-card{background:var(--card);padding:1rem;border-radius:12px;display:flex;flex-direction:column;gap:0.75rem;align-items:flex-start}
+    .metrics{display:flex;gap:0.75rem;flex-wrap:wrap}
+    .metric{background:var(--glass);padding:0.6rem 0.8rem;border-radius:10px;font-weight:700}
+
+    .features{display:grid;grid-template-columns:repeat(1,1fr);gap:var(--gap);margin-top:1rem}
+    .feature{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:1rem;border-radius:12px;display:flex;gap:0.8rem;align-items:flex-start}
+    .feature svg{width:44px;height:44px;flex:0 0 44px}
+    .feature h3{margin:0 0 0.25rem}
+    .feature p{margin:0;color:var(--muted)}
+
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;margin-top:1rem}
+    .tile{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:1rem;border-radius:12px;min-height:120px;display:flex;align-items:center;justify-content:center}
+
+    .cta-band{display:flex;flex-direction:column;gap:0.75rem;padding:1rem;border-radius:12px;margin-top:1rem;background:linear-gradient(90deg, rgba(94,234,212,0.06), rgba(96,165,250,0.02));}
+    form{display:flex;gap:0.5rem;flex-wrap:wrap}
+    input[type="email"]{flex:1 1 220px;padding:0.6rem 0.75rem;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    button[type="submit"]{padding:0.6rem 0.9rem;border-radius:10px;border:0;background:var(--accent);color:#042431;font-weight:700}
+
+    footer{margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted)}
+
+    @media(min-width:640px){
+      .hero{grid-template-columns: 1fr 420px;}
+      .hero-inner{grid-template-columns:1fr}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+    }
+
+    @media(min-width:900px){\n      .hero{grid-template-columns:repeat(2,1fr); text-align:left;}\n      .features{grid-template-columns:repeat(3,1fr)}\n      .gallery{grid-template-columns:repeat(4,1fr)}\n      header .nav{background:rgba(255,255,255,0.01);padding:0.65rem}\n    }
+      .features{grid-template-columns:repeat(3,1fr)}
+      .gallery{grid-template-columns:repeat(4,1fr)}
+      header .nav{background:rgba(255,255,255,0.01);padding:0.65rem}
+    }
+
+    @media(min-width:1200px){
+      .wrap{padding:3rem}
+      h1{font-size:3.1rem}
+    }
+
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;justify-content:center}
+
+    a:focus,button:focus,input:focus{outline:3px solid rgba(94,234,212,0.12);outline-offset:3px}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <div class="logo">RN</div>
+          <div>
+            <div style="font-weight:800">Responsive
+              <span style="color:var(--muted);font-weight:600">Template</span>
+            </div>
+            <div class="muted" style="font-size:12px">Grid · Media queries · Adaptive</div>
+          </div>
+        </div>
+
+        <nav aria-label="Primary navigation">
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a class="cta" href="#contact">Get started</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <div>
+            <div class="eyebrow">New template — Built responsive</div>
+            <h1>Adaptive website template using CSS Grid & media queries</h1>
+            <p class="lead">Mobile-first layout with a two-column hero on tablet/desktop, an accessible structure, and modular components you can reuse across projects.</p>
+
+            <div class="hero-cta">
+              <a class="cta" href="#contact">Try the demo</a>
+              <a href="#features" style="background:transparent;padding:0.55rem 0.9rem;border-radius:10px;border:1px solid rgba(255,255,255,0.04);text-decoration:none;font-weight:700;color:var(--muted)">Learn more</a>
+            </div>
+
+            <div style="margin-top:1rem;display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap">
+              <div class="metric">Fast — &lt;200ms TTFB</div>
+              <div class="metric">Accessible — ARIA & keyboard</div>
+              <div class="metric">Adaptive — all screens</div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div style="width:100%;display:flex;justify-content:space-between;align-items:center">
+              <strong>Live preview</strong>
+              <small class="muted">v1.0</small>
+            </div>
+            <div style="width:100%;height:180px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);display:flex;align-items:center;justify-content:center">
+
+              <svg width="220" height="120" viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="216" height="116" rx="10" stroke="rgba(255,255,255,0.04)" fill="rgba(255,255,255,0.01)"/>
+                <rect x="18" y="22" width="184" height="76" rx="6" fill="rgba(255,255,255,0.02)" />
+                <circle cx="110" cy="60" r="10" fill="rgba(94,234,212,0.12)"/>
+              </svg>
+            </div>
+            <div style="display:flex;gap:0.6rem;width:100%;justify-content:space-between">
+              <small class="muted">Adaptive grid • Progressive enhancement</small>
+              <small class="muted">No frameworks required</small>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section id="features" class="features" aria-label="Features">
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div>
+            <h3>Grid-first layout</h3>
+            <p>Design pages using CSS Grid for predictable rows & columns that rearrange elegantly on any screen.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div>
+            <h3>Mobile-first & media queries</h3>
+            <p>Start from the smallest screen and progressively enhance. Breakpoints at 640px, 900px and 1200px included.</p>
+          </div>
+        </div>
+
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16v10H4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <div>
+            <h3>Accessibility & performance</h3>
+            <p>Semantic markup, focus styles and small bundle size for fast first paint on mobile networks.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="gallery" aria-label="Gallery">
+        <div class="tile">Placeholder block</div>
+        <div class="tile">Placeholder block</div>
+        <div class="tile">Placeholder block</div>
+        <div class="tile">Placeholder block</div>
+      </section>
+
+      <section id="contact" class="cta-band">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+          <div>
+            <strong style="font-size:1.05rem">Get updates & try the template</strong>
+            <div class="muted" style="font-size:13px">No spam — unsubscribe anytime.</div>
+          </div>
+
+          <form onsubmit="event.preventDefault();alert('Thanks! demo signups are simulated.');">
+            <label for="email" class="sr-only" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Email</label>
+            <input id="email" type="email" placeholder="Your email" required />
+            <button type="submit">Notify me</button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Responsive Template</div>
+      <div class="muted">Built with Grid & Flexbox</div>
+    </footer>
+  </div>
+
+  <script>
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+  </script>
+
+</body>
+</html>
